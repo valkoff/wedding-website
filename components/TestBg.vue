@@ -1,11 +1,9 @@
 <template>
-  <div id="main-wrap" class="relative w-screen h-screen">
-    <div class="main-container">
+  <div id="main-wrap" class="w-screen h-screen">
+    <div class="container">
       <div class="absolute inset-0 grid items-center">
-        <img src="/logo.png" alt="logo" class="h-64 mx-auto my-20" />
-
-
-        <div class="grid gap-4 p-6 text-center bg-opacity-30 text-muted text-shadow font-cardo bg-secondary">
+        <img src="/logo.png" alt="logo" class="object-contain w-full h-64 px-6 mx-auto mt-20" />
+        <div class="grid gap-4 p-6 text-muted text-shadow font-cardo">
           <h2 class="text-3xl">Save the date</h2>
           <h1 class="text-5xl tracking-widest text-primary">01.06.2025</h1>
 
@@ -16,9 +14,6 @@
             l'accoglienza vi inviterà a gustare un aperitivo nel giardino.
           </p>
         </div>
-
-
-
 
       </div>
     </div>
@@ -31,14 +26,17 @@
 <style scoped>
 #main-wrap {
   position: relative;
+  width: 100%;
 }
 
 #main-wrap:before {
-  content: ' ';
-  display: block;
+  content: '';
+  display: inline;
   position: absolute;
   left: 0;
   top: 0;
+  padding: 0;
+  margin: 0;
   width: 100%;
   height: 100%;
   opacity: 0.25;
@@ -46,9 +44,5 @@
   background-position: 50% 0;
   background-size: cover;
   background-image: url('/front.jpg');
-}
-
-#main-container {
-  position: relative;
 }
 </style>

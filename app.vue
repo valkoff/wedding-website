@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="text-center">
 
     <TestBg />
 
@@ -8,9 +8,11 @@
     <!-- <FirstView /> -->
 
 
-    <TimeRemaining />
+    <!-- <TimeRemaining /> -->
 
     <RsvpView />
+
+    <ListaNozze />
 
 
 

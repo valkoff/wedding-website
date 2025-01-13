@@ -1,72 +1,84 @@
 <template>
-    <div class="grid gap-4 p-6 text-center bg-opacity-30 text-muted text-shadow font-cardo bg-secondary">
-        <h2 class="text-3xl">La Location</h2>
-        <h1 class="text-5xl tracking-widest text-primary">La Seminatrice</h1>
-        <p class="text-lg font-bold">Strada Passo di Roma S. Salvatore, 16 <br />
-            02038 Scandriglia RI </p>
-        <p class="text-lg">
-            Nel cuore della Sabina, la location è un luogo magico e suggestivo, immerso nel verde e nella
-            natura. <br />
-            Vogliamo passare con voi una giornata indimenticabile, in un ambiente rilassante e familiare.
-        </p>
+    <div class="grid items-center w-screen h-screen max-w-screen-sm px-4 mx-auto">
+        <div class="grid gap-4">
+            <h2 class="text-2xl">Conferma la tua presenza</h2>
+            <h1 class="text-4xl tracking-widest text-primary">Ci sarai?</h1>
+            <p class="font-bold">Ti chiediamo di confermare la tua presenza entro il 30 aprile.
+                Non vediamo
+                l'ora di
+                festeggiare insieme!</p>
 
-        <div class="text-xl font-bold text-primary">
-            <a href="https://maps.app.goo.gl/j8ezmynL2KT5zeQ99" target="_blank">Indicazioni</a>
+            <!-- Form RSVP -->
+            <form class="grid gap-4 px-4">
+                <div class="flex flex-col gap-2 text-left">
+                    <label for="name" class="block mb-2">Nome e cognome</label>
+                    <input id="name" type="text" v-model="guestName"
+                        class="px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-primary" />
+                </div>
+
+                <!-- Sezione Adulti e Bambini -->
+                <div v-if="guestName" class="grid gap-3">
+                    <p class="text-justify ">Verrai accompagnato o in famiglia? Fateci sapere quanti sarete in totale.
+                    </p>
+                    <div class="flex flex-row gap-2 sm:flex-row sm:justify-between">
+                        <!-- Adulti -->
+                        <div class="flex items-center gap-2">
+                            <label>Adulti</label>
+                            <div class="flex items-center">
+                                <CounterButton @click="decrement('adults')" content="-" />
+                                <span class="inline-block w-8 h-8 py-1 text-xl bg-white">{{ adults }}</span>
+                                <CounterButton @click="increment('adults')" content="+" />
+                            </div>
+                        </div>
+
+                        <!-- Bambini -->
+                        <div class="flex items-center gap-2">
+                            <label>Bambini</label>
+                            <div class="flex items">
+                                <CounterButton @click="decrement('children')" content="-" />
+                                <span class="inline-block w-8 h-8 py-1 text-xl bg-white">{{ children }}</span>
+                                <CounterButton @click="increment('children')" content="+" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- Richieste alimentari, allergie o intolleranze -->
+                <div class="mt-4">
+                    <label for="food-requests" class="block mb-2 text-justify">Se avete richieste
+                        alimentari,
+                        allergie o intolleranze, oppure se avete bisogno di indicazioni per spostamenti e alloggio, o
+                        per
+                        qualsiasi altro dettaglio, fatecelo sapere!</label>
+                    <textarea id="details" placeholder="Scrivi qui le tue richieste o le tue domande"
+                        class="w-full px-3 py-2 border resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+                        rows="2"></textarea>
+                </div>
+
+                <button type="submit" class="py-2 mt-3 text-white bg-primary hover:bg-opacity-90">
+                    Invia
+                </button>
+            </form>
         </div>
     </div>
 
-    <div class="grid gap-4 p-6 text-center bg-opacity-30 text-muted text-shadow font-cardo bg-secondary">
-        <h2 class="text-3xl">Alloggi</h2>
-        <p class="mb-3 text-lg">
-            Abbiamo invitati da ogni parte d'Italia, ognuno con diverse esigenze di spostamento e permanenza.
-            Per questo suggeriamo tre delle soluzioni più comuni che possono aiutarvi a trascorrere al meglio il
-            viaggio, in ordine di distanza dalla Location
-        </p>
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-
-            <div class="space-y-2">
-                <h1 class="text-3xl tracking-widest text-primary">Roma</h1>
-                <p class="text-lg font-bold">La Capitale</p>
-                <p class="text-lg">
-                    Se volete sfruttare l'occasione per visitarla, vi consigliamo di trattenervi qualche giorno in più.
-                </p>
-                <p>> 1 ora in macchina</p>
-
-                <div class="text-xl font-bold text-primary">
-                    <a href="https://maps.app.goo.gl/j8ezmynL2KT5zeQ99" target="_blank">Indicazioni</a>
-                </div>
-            </div>
-
-
-            <div class="space-y-2">
-                <h1 class="text-3xl tracking-widest text-primary">Monterotondo</h1>
-                <p class="text-lg font-bold">Comoda e servita </p>
-                <p class="text-lg">
-                    Alle porte di Roma, facilmente raggiungibile in treno. Una cittadina con tutti i servizi a
-                    disposizione.
-                </p>
-                <p class="font-italic">circa 40 min in macchina</p>
-
-                <div class="text-xl font-bold text-primary">
-                    <a href="https://maps.app.goo.gl/j8ezmynL2KT5zeQ99" target="_blank">Indicazioni</a>
-                </div>
-            </div>
-
-
-            <div class="space-y-2">
-                <h1 class="text-2xl tracking-widest text-primary">Vicino la location</h1>
-                <p class="text-lg font-bold">Zero sbatti</p>
-                <p class="text-lg">
-                    Se te pesa er culo, vuoi svegliarti in mezzo alle pecore e vuoi tornare strisciando dopo aver
-                    ingerito più alcool di un vichingo, è meglio non allontanarsi troppo.
-                </p>
-                <p>circa 5 min ciondolando</p>
-
-                <div class="text-xl font-bold text-primary">
-                    <a href="https://maps.app.goo.gl/j8ezmynL2KT5zeQ99" target="_blank">Indicazioni</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
 </template>
+
+<script lang="ts" setup>
+import { ref } from 'vue';
+
+const guestName = ref<string>('');
+const adults = ref<number>(1);
+const children = ref<number>(0);
+
+function increment(type: 'adults' | 'children') {
+    if (type === 'adults') adults.value++;
+    if (type === 'children') children.value++;
+}
+
+function decrement(type: 'adults' | 'children') {
+    if (type === 'adults' && adults.value > 1) adults.value--;
+    if (type === 'children' && children.value > 0) children.value--;
+}
+</script>
