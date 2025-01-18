@@ -1,23 +1,33 @@
 <template>
-  <div class="grid gap-4 p-4 px-8 text-center bg-white text-muted bg-opacity-60 text-shadow">
-    <h2 class="text-4xl tracking-wider">Mancano...</h2>
-    <div>
-      <div class="grid grid-cols-4 gap-4">
-        <div class="text-4xl tracking-wider">
-          {{ remainingTime.days }}
-          <span class="text-md">giorni</span>
-        </div>
-        <div class="text-4xl tracking-wider">
-          {{ remainingTime.hours }}
-          <span class="text-md">ore</span>
-        </div>
-        <div class="text-4xl tracking-wider">
-          {{ remainingTime.minutes }}
-          <span class="text-md">minuti</span>
-        </div>
-        <div class="text-4xl tracking-wider">
-          {{ remainingTime.seconds }}
-          <span class="text-md">secondi</span>
+  <div class="p-4 px-6 mt-20 text-center bg-white text-muted bg-opacity-60 text-shadow">
+    <div class="grid max-w-screen-md gap-4 mx-auto">
+      <h2 class="text-2xl tracking-wider md:text-4xl">Mancano...</h2>
+      <div>
+        <div class="grid grid-cols-4 gap-4">
+          <!-- Giorni -->
+          <div>
+            <span class="text-xl md:text-3xl">{{ remainingTime.days }}</span>
+            <br />
+            <span class="text-sm md:text-lg">giorni</span>
+          </div>
+          <!-- Ore -->
+          <div>
+            <span class="text-xl md:text-3xl">{{ remainingTime.hours }}</span>
+            <br />
+            <span class="text-sm md:text-lg">ore</span>
+          </div>
+          <!-- Minuti -->
+          <div>
+            <span class="text-xl md:text-3xl">{{ remainingTime.minutes }}</span>
+            <br />
+            <span class="text-sm md:text-lg">minuti</span>
+          </div>
+          <!-- Secondi -->
+          <div>
+            <span class="text-xl md:text-3xl">{{ remainingTime.seconds }}</span>
+            <br />
+            <span class="text-sm md:text-lg">secondi</span>
+          </div>
         </div>
       </div>
     </div>

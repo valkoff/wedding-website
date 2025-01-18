@@ -51,6 +51,7 @@
 
                 <h6 class="mt-2 text-lg font-bold">Suggerimenti: </h6>
                 <div class="font-bold text-primary">
+                    <a href="https://www.lariballina.it/" target="_blank">La Riballina</a> <br />
                     <a href="https://www.booking.com/searchresults.it.html?label=gen173nr-1FCAEoggI46AdIM1gEaHGIAQGYARS4AQfIAQzYAQHoAQH4AQyIAgGoAgO4Auvlk7wGwAIB0gIkY2U0YzYwMGYtNTM5ZC00NTQ0LTg1NWYtNDQyMGUyOTBmOWIw2AIG4AIB&sid=9d4e5eb6029fb6208167a139f7880a82&aid=304142&ss=Monterotondo&ssne=Scandriglia&ssne_untouched=Scandriglia&lang=it&src=searchresults&sr_view=grid&checkin=2025-06-01&checkout=2025-06-02&group_adults=1&no_rooms=1&group_children=0"
                         target="_blank">Cerca su Booking.com</a>
                 </div>

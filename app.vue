@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import DressCode from './components/DressCode.vue';
+
+</script>
+
 <template>
   <div class="text-center">
 
@@ -8,9 +13,12 @@
     <!-- <FirstView /> -->
 
 
-    <!-- <TimeRemaining /> -->
+    <TimeRemaining />
 
     <RsvpView />
+
+
+    <DressCode />
 
     <ListaNozze />
 

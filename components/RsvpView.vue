@@ -9,11 +9,11 @@
                 festeggiare insieme!</p>
 
             <!-- Form RSVP -->
-            <form class="grid gap-4 px-4">
+            <form class="grid gap-4 px-4" @submit.prevent="sendEmail">
                 <div class="flex flex-col gap-2 text-left">
                     <label for="name" class="block mb-2">Nome e cognome</label>
                     <input id="name" type="text" v-model="guestName"
-                        class="px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-primary" />
+                        class="px-4 py-2 border focus:outline-none focus:ring-2 focus:ring-primary" required />
                 </div>
 
                 <!-- Sezione Adulti e Bambini -->
@@ -41,9 +41,8 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+
                 <!-- Richieste alimentari, allergie o intolleranze -->
                 <div class="mt-4">
                     <label for="food-requests" class="block mb-2 text-justify">Se avete richieste
@@ -51,26 +50,32 @@
                         allergie o intolleranze, oppure se avete bisogno di indicazioni per spostamenti e alloggio, o
                         per
                         qualsiasi altro dettaglio, fatecelo sapere!</label>
-                    <textarea id="details" placeholder="Scrivi qui le tue richieste o le tue domande"
+                    <textarea id="details" v-model="details" placeholder="Scrivi qui le tue richieste o le tue domande"
                         class="w-full px-3 py-2 border resize-none focus:outline-none focus:ring-2 focus:ring-primary"
                         rows="2"></textarea>
                 </div>
 
-                <button type="submit" class="py-2 mt-3 text-white bg-primary hover:bg-opacity-90">
-                    Invia
+                <button type="submit" :disabled="guestName === ''"
+                    class="py-2 mt-3 text-white bg-primary hover:bg-opacity-90 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Conferma partecipazione
                 </button>
             </form>
         </div>
     </div>
-
 </template>
 
 <script lang="ts" setup>
 import { ref } from 'vue';
+import emailjs from '@emailjs/browser';
+
+const config = useRuntimeConfig();
+const apiKey = config.public.mailjsApiKey;
+const serviceId = config.public.mailjsServiceId;
 
 const guestName = ref<string>('');
 const adults = ref<number>(1);
 const children = ref<number>(0);
+const details = ref<string>('');
 
 function increment(type: 'adults' | 'children') {
     if (type === 'adults') adults.value++;
@@ -80,5 +85,32 @@ function increment(type: 'adults' | 'children') {
 function decrement(type: 'adults' | 'children') {
     if (type === 'adults' && adults.value > 1) adults.value--;
     if (type === 'children' && children.value > 0) children.value--;
+}
+
+function sendEmail() {
+    const templateParams = {
+        from_name: guestName.value,
+        adults: adults.value,
+        children: children.value,
+        details: details.value,
+    };
+
+    emailjs
+        .send(
+            serviceId,
+            'template_n5ezmeh',
+            templateParams,
+            apiKey
+        )
+        .then(
+            (response) => {
+                alert('Email inviata con successo!');
+                console.log('SUCCESS!', response.status, response.text);
+            },
+            (error) => {
+                alert('Errore durante l’invio dell’email. Riprova più tardi.');
+                console.log('FAILED...', error);
+            }
+        );
 }
 </script>

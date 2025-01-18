@@ -1,6 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
+  runtimeConfig: {
+    public: {
+      mailjsApiKey: process.env.MAILJS_API_KEY,
+      mailjsServiceId: process.env.MAILJS_SERVICE_ID,
+    }
+  },
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
   postcss: {
@@ -11,7 +17,7 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'A&V 1.06.25',
+      title: 'A&V 1 Giugno 25',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
