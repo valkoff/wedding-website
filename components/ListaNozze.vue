@@ -11,6 +11,7 @@
                     </p>
 
                     <p class="text-lg font-bold">IBAN: IT15X0347501605CC0010255466</p>
+                    <p class="text-lg font-bold">Intestato a: Valerio Cofano</p>
                 </div>
             </div>
         </div>
