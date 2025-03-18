@@ -10,7 +10,7 @@
                         rendere la nostra luna di miele indimenticabile, te ne saremo davvero grati!
                     </p>
 
-                    <p class="text-lg font-bold">IBAN: IT15X0347501605CC0010255466</p>
+                    <p class="text-lg font-bold">IBAN: IT35V0357601601010002364649</p>
                     <p class="text-lg font-bold">Intestato a: Valerio Cofano</p>
                 </div>
             </div>
