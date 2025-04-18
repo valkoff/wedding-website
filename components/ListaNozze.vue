@@ -11,6 +11,7 @@
                     </p>
 
                     <p class="text-lg font-bold">IBAN: IT35V0357601601010002364649</p>
+                    <p class="text-lg font-bold">SWIFT: BBVAITMMXXX</p>
                     <p class="text-lg font-bold">Intestato a: Valerio Cofano</p>
                 </div>
             </div>
